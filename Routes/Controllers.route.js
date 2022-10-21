@@ -1,6 +1,6 @@
 const {Routes, Router}=require("express")
 const {MvcModel}=require("../Model/Controllers.model")
-
+const fs =require("fs")
 const mvctodoRouter=Router()
 
 mvctodoRouter.get("/", async(req,res)=>{
@@ -14,7 +14,13 @@ mvctodoRouter.post("/create", async(req,res)=>{
     res.send("data added successfully")
 })
 
+mvctodoRouter.delete("/:todoId", async(req,res)=>{
+  const param= req.params["todoId"];
+  console.log(param)
+ await MvcModel.deleteMany({id:param})
 
+  res.send("deleted successfully")
+})
 
 
 module.exports={mvctodoRouter}
