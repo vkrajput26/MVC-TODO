@@ -16,11 +16,21 @@ mvctodoRouter.post("/create", async(req,res)=>{
 
 mvctodoRouter.delete("/:todoId", async(req,res)=>{
   const param= req.params["todoId"];
-  console.log(param)
+//   console.log(param)
  await MvcModel.deleteMany({id:param})
 
   res.send("deleted successfully")
 })
+
+mvctodoRouter.put("/:todoId", async(req,res)=>{
+    const param= req.params["todoId"];
+    // console.log(param)
+    const data=req.body
+    //  console.log(data)
+   await MvcModel.updateMany({id:param},{$set:{id:data.id, name:data.name,age:data.age}})
+  
+    res.send("updated successfully")
+  })
 
 
 module.exports={mvctodoRouter}
