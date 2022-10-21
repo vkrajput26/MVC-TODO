@@ -20,7 +20,7 @@ app.use("/todos",mvctodoRouter)
 app.listen(process.env.PORT_number, async()=>{
     try{
         await connection
-       console.log(" DB is connected")
+       console.log(" DB is connected ")
     }
     catch(err){
         console.log(err)
